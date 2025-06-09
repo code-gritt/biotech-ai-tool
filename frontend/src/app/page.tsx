@@ -2,6 +2,7 @@
 
 import { Clapperboard, Search, SearchCodeIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import GeneViewer from "~/components/gene-viewer";
 // import GeneViewer from "~/components/gene-viewer";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -166,12 +167,11 @@ export default function HomePage() {
 
       <main className="container mx-auto px-6 py-6">
         {selectedGene ? (
-          // <GeneViewer
-          //   gene={selectedGene}
-          //   genomeId={selectedGenome}
-          //   onClose={() => setSelectedGene(null)}
-          // />
-          <div>Gokul</div>
+          <GeneViewer
+            gene={selectedGene}
+            genomeId={selectedGenome}
+            onClose={() => setSelectedGene(null)}
+          />
         ) : (
           <>
             <Card className="mb-6 gap-0 border-none bg-white py-0 shadow-sm">
