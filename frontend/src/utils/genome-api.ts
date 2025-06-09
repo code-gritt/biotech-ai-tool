@@ -82,10 +82,11 @@ export async function getAvailableGenomes() {
 
   for (const genomeId in genomes) {
     const genomeInfo = genomes[genomeId];
+    if (!genomeInfo) continue;
     const organism = genomeInfo.organism || "Other";
 
     if (!structuredGenomes[organism]) structuredGenomes[organism] = [];
-    structuredGenomes[organism].push({
+    structuredGenomes[organism]!.push({
       id: genomeId,
       name: genomeInfo.description || genomeId,
       sourceName: genomeInfo.sourceName || genomeId,
@@ -95,7 +96,6 @@ export async function getAvailableGenomes() {
 
   return { genomes: structuredGenomes };
 }
-
 export async function getGenomeChromosomes(genomeId: string) {
   const apiUrl = `https://api.genome.ucsc.edu/list/chromosomes?genome=${genomeId}`;
   const response = await fetch(apiUrl);
